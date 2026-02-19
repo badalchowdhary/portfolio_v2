@@ -11,7 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { href: "#resume", label: "Resume" },
+  { href: "https://drive.google.com/file/d/1E4Kkm1VexwwvaCYfLgGE8bf2aXLAhrLh/view?usp=sharing", label: "Resume", external: true },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#about", label: "About" },
@@ -41,8 +41,22 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) =>
-            isHome ? (
+          {navItems.map((item) => {
+            if (item.external) {
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-sm text-muted-foreground transition-colors hover:text-primary link-underline cursor-pointer"
+                >
+                  {item.label}
+                </a>
+              );
+            }
+
+            return isHome ? (
               <a
                 key={item.href}
                 href={item.href}
@@ -62,8 +76,8 @@ export function Header() {
               >
                 {item.label}
               </Link>
-            )
-          )}
+            );
+          })}
         </nav>
 
         {/* Mobile Menu */}
@@ -81,7 +95,17 @@ export function Header() {
               </div>
               {navItems.map((item) => (
                 <SheetClose asChild key={item.href}>
-                  {isHome ? (
+                  {item.external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-lg text-muted-foreground transition-colors hover:text-primary py-2 cursor-pointer"
+                    >
+                      <span className="text-primary mr-2">→</span>
+                      {item.label}
+                    </a>
+                  ) : isHome ? (
                     <a
                       href={item.href}
                       onClick={(e) => {

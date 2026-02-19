@@ -10,7 +10,7 @@ import { TypingCursor } from "@/components/ui/TypingCursor";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { ArrowRight, Github, Linkedin, Mail, Send } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Send, ExternalLink } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const allProjects = [
@@ -92,7 +92,7 @@ const experience = [
     role: "Software Development Engineer (SDE I)",
     period: "Jan 2025 - Present",
     achievements: [
-      "Contributed to the development of an end-to-end platform ecosystem, taking ownership across mobile app feature development, backend services, & AWS infrastructure supporting 1,000+ active users with weekly production releases.",
+      "Contributed to the development of an end-to-end platform ecosystem, taking ownership across mobile app feature development, backend services, & AWS infrastructure supporting 1,000+ active users with weekly production releases, along with ML pipelines and deployment.",
       "Shipped production Flutter app features and Flask backend services; worked on a full UI revamp and internal maintenance tooling; added unit and regression tests improving crash-free sessions from 74% to 98.3% and executed a low-downtime AWS account migration, improving system reliability.",
       "Improved AI chatbot’s RAG pipeline via optimized chunking, and a two-level rolling context summarization strategy, increasing retrieval precision by 18%, reducing prompt token usage by 40%, and lowering end-to-end response latency by 25% while maintaining response relevance.",
       "Designed, implemented, and deployed edge CV models for dog eye segmentation (for non-invasive body temperature estimation), using GroundingDINO & YOLO, achieving F1 score of 0.94 and dog masking with background blurring, enforcing privacy-by-design.",
@@ -106,8 +106,7 @@ const experience = [
     period: "Oct 2024 - Jan 2025",
     achievements: [
       "Integrated ONDC MP2 API for assignment of orders to delivery partners, enhancing order fulfillment rates.",
-      "Designed HLD/LLD and implemented REST APIs for a family shared-cart feature, enabling multi-user cart edits and order lifecycle management.",
-      "Resolved critical bugs in the existing codebase, ensuring system stability and improved functionality."
+      "Designed HLD/LLD and implemented REST APIs for a family shared-cart feature, enabling multi-user cart edits and order lifecycle management."
     ]
   },
   {
@@ -140,7 +139,10 @@ const technicalSkills = [
   {
     category: "Cloud & Infrastructure",
     skills: [
-      "AWS (EC2, ECS, Lambda, S3, API Gateway, Cognito, DynamoDB)",
+      "AWS",
+      "EC2, ECS, Lambda, S3, API Gateway, Cognito, DynamoDB",
+      "DocumentDB, Keyspaces, SQS, EventBridge",
+      "OpenSearch, Bedrock",
       "CI/CD",
       "Git",
     ],
@@ -259,7 +261,7 @@ export default function Home() {
                 <ul className="space-y-2 mt-4">
                   {exp.achievements.map((item, i) => (
                     <li key={i} className="text-muted-foreground leading-relaxed flex items-start">
-                      <span className="text-primary mr-2 mt-1.5">•</span>
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0 mt-2.5 mr-2" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -332,6 +334,27 @@ export default function Home() {
                     {/* <p className="text-sm text-muted-foreground">Materials Science & Engineering</p>
                     <p className="text-sm text-muted-foreground">Minors in Computer Science & Engineering</p> */}
                   </div>
+                </div>
+              </div>
+
+              <div className="opacity-0 animate-fade-in-up stagger-4">
+                <CodeDivider label="Coding Profiles" />
+                <div className="space-y-4">
+                  <a
+                    href="https://leetcode.com/u/badalchowdhary/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 bg-muted/50 border border-border rounded-lg hover:border-primary/50 transition-colors group max-w-sm"
+                  >
+                    <div className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-lg border border-border shrink-0 group-hover:border-primary/50 transition-colors">
+                      <img src="/leetcode.png" alt="LeetCode" className="h-6 w-6 object-contain" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-sm text-foreground group-hover:text-primary transition-colors">LeetCode</p>
+                      <p className="text-xs text-muted-foreground w-full truncate">View Profile</p>
+                    </div>
+                    <ExternalLink className="ml-auto h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </a>
                 </div>
               </div>
             </div>

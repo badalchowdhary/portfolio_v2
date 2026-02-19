@@ -14,6 +14,44 @@ const projectsData: Record<string, {
   challenges: string[];
   features: string[];
 }> = {
+  "image-analysis-plant-meat": {
+    name: "Image Analysis of Plant Based Meat",
+    description: "Research on image and texture analysis of plant-based meat alternatives.",
+    fullDescription: "Researched about Image and Texture Analysis of plant based meat products analogues. Performed inferences with CLIP on 14 classes of the self-curated dataset with 10,000+ images of plant based meat patty. Optimally reduced redundant classes from 14 to 8, resulting in a 28.85% improvement in CLIP’s classification accuracy. Utilized Grounded-SAM for background noise removal and patty extraction, resulting in an additional 3.5% accuracy enhancement. Fine-tuned RESNET-50 model trained on Food101 dataset, attaining a remarkable 96.43% validation accuracy and 96.77% training accuracy.",
+    stack: ["Python", "Computer Vision", "PyTorch", "CLIP"],
+    impact: "96.43% validation accuracy on Food101 dataset",
+    challenges: [
+      "Curating and processing a dataset of 10,000+ images",
+      "Optimizing class definitions to improve CLIP accuracy",
+      "Implementing Grounded-SAM for precise background removal",
+      "Fine-tuning RESNET-50 to achieve high validation accuracy"
+    ],
+    features: [
+      "CLIP-based image classification on 14 classes",
+      "Grounded-SAM for background noise removal",
+      "Class reduction strategy yielding 28.85% accuracy boost",
+      "Fine-tuned RESNET-50 model with >96% accuracy"
+    ]
+  },
+  "flood-forecasting-system": {
+    name: "Flood Forecasting System",
+    description: "Real-time flood warning dashboard and prediction model.",
+    fullDescription: "Deployed a supervised classification model for pixel-level river flood prediction by integrating 2001–2012 river-gauge data with Google Earth Engine inundation maps, achieving a flood extent F1 score of 0.86. Developed a real-time Flood Warning Dashboard using React JS, Flask, and Cloudinary, enabling dynamic visualization and alerting for flood events.",
+    stack: ["React", "Flask", "Python", "Google Earth Engine"],
+    impact: "F1 score of 0.86 in flood extent prediction",
+    challenges: [
+      "Integrating 12 years of river-gauge data with satellite maps",
+      "Achieving high accuracy (0.86 F1 score) in pixel-level prediction",
+      "Building a real-time dashboard for dynamic visualization",
+      "Handling large-scale geospatial data from Google Earth Engine"
+    ],
+    features: [
+      "Supervised classification model for flood prediction",
+      "Integration with Google Earth Engine inundation maps",
+      "Real-time Flood Warning Dashboard",
+      "Dynamic visualization and alerting system"
+    ]
+  },
   "tinylink": {
     name: "tinyLink",
     description: "A web application for URL shortening with QR code generation.",
@@ -181,9 +219,9 @@ export default function ProjectDetail() {
               <h1 className="text-3xl font-bold text-foreground mb-4">Project Not Found</h1>
               <p className="text-muted-foreground mb-8">The project you're looking for doesn't exist.</p>
               <Button asChild>
-                <Link to="/work">
+                <Link to="/#projects">
                   <ArrowLeft className="mr-2 h-4 w-4" />
-                  Back to Work
+                  Back to Projects
                 </Link>
               </Button>
             </div>
@@ -198,12 +236,12 @@ export default function ProjectDetail() {
       <section className="py-20">
         <div className="container max-w-4xl">
           {/* Back Link */}
-          <Link 
-            to="/work" 
+          <Link
+            to="/#projects"
             className="inline-flex items-center font-mono text-sm text-muted-foreground hover:text-primary transition-colors mb-8 opacity-0 animate-fade-in-up"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Work
+            Back to Projects
           </Link>
 
           {/* Project Header */}
@@ -214,7 +252,7 @@ export default function ProjectDetail() {
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
               {project.fullDescription}
             </p>
-            
+
             {/* Tech Stack */}
             <div className="flex flex-wrap gap-2 mb-6">
               {project.stack.map((tech) => (
