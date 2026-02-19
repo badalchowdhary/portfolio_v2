@@ -341,7 +341,7 @@ export default function Home() {
                 <CodeDivider label="Coding Profiles" />
                 <div className="space-y-4">
                   <a
-                    href="https://leetcode.com/u/badalchowdhary/"
+                    href="https://leetcode.com/u/badal_0503/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 p-4 bg-muted/50 border border-border rounded-lg hover:border-primary/50 transition-colors group max-w-sm"
